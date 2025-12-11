@@ -1,70 +1,99 @@
-# Getting Started with Create React App
+# 🚀 Full Stack Demo Application — Django REST + React
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A complete full-stack web application built with **Django REST Framework**, **React**, and **Supabase PostgreSQL**, featuring full CRUD operations, a dashboard visualization, and external API integration.
 
-## Available Scripts
+---
 
-In the project directory, you can run:
+## 📌 Features
 
-### `npm start`
+### 🛠 Backend (Django + DRF)
+- REST API built using Django REST Framework
+- PostgreSQL database using Supabase
+- CRUD operations for `Item` model
+- Reporting endpoint for dashboard visualization
+- External API integration: GitHub user fetcher
+- CORS enabled for frontend communication
+- Production-ready (Gunicorn + Whitenoise)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### 🎨 Frontend (React)
+- Interactive CRUD UI for items
+- Dashboard with Chart.js visualization
+- GitHub user viewer page
+- Axios-based API service layer
+- React Router navigation
+- Environment-based configuration
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### 🚀 Deployment
+- Backend deployed using **Render**
+- Frontend deployed using **Vercel**
+- Database hosted on **Supabase**
 
-### `npm test`
+---
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
+---
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## ⚙️ Tech Stack
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+**Backend:** Django 6, DRF, PostgreSQL, dj-database-url, CORS headers  
+**Frontend:** React 19, Chart.js, Axios, React Router  
+**DevOps:** Supabase, Render, Vercel, Gunicorn, Whitenoise  
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+---
 
-### `npm run eject`
+# 🛠 Backend Setup (Django)
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+1. Install dependencies
+ 
+cd demo_backend
+python -m venv .venv
+source .venv/Scripts/activate    # Windows
+pip install -r requirements.txt
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+2. create .env file
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+DJANGO_SECRET_KEY=your-secret-key
+DEBUG=1
+ALLOWED_HOSTS=*
+DATABASE_URL=<postgresql://postgres:8J!Yhq!tT.$5.Q6@db.narfytwkivknleecdcdx.supabase.co:5432/postgres>
 
-## Learn More
+3. Run migrations
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+python manage.py makemigrations
+python manage.py migrate
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+4. Start backend Server
 
-### Code Splitting
+python manage.py runserver
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+then backend runs at http://localhost:8000/
 
-### Analyzing the Bundle Size
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+# 🛠 Frontend Setup (React)
 
-### Making a Progressive Web App
+1. Install dependencies
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+cd demo_frontend
+npm install
 
-### Advanced Configuration
+2. create .env file
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+REACT_APP_API_URL=http://localhost:8000/api
 
-### Deployment
+3. Start React app
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+npm start
 
-### `npm run build` fails to minify
+then frontend runs at http://localhost:3000/
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+API Endpoints
+
+| Method | Endpoint           | Description     |
+| ------ | ------------------ | --------------- |
+| GET    | `/api/items/`      | List all items  |
+| POST   | `/api/items/`      | Create new item |
+| GET    | `/api/items/<id>/` | Retrieve item   |
+| PUT    | `/api/items/<id>/` | Update item     |
+| DELETE | `/api/items/<id>/` | Delete item     |
